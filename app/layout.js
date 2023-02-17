@@ -1,14 +1,19 @@
-import './globals.css'
+import { routes } from "models";
+import { Navigator } from "components";
+import "../styles/globals.css";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body>
+        <header>
+          <Navigator
+            pathNames={[routes.HOME, routes.ABOUT_US, routes.CONTACT_US]}
+          />
+        </header>
+        {children}
+      </body>
     </html>
-  )
+  );
 }
