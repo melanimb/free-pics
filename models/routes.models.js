@@ -3,7 +3,7 @@
 export const routes = {
   HOME: {
     path: "/",
-    name: "PicsFree",
+    name: "Home",
   },
   ABOUT_US: {
     path: "*",
