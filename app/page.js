@@ -1,11 +1,17 @@
-import { BlurImage, Container, GridContainer, Searchbar } from "components";
+import {
+  BlurImage,
+  Container,
+  GridContainer,
+  Searchbar,
+  SearchbarContainer,
+} from "components";
 
 const App = () => {
   return (
     <main>
-    {/* <NavContainer> */}
-      <Searchbar />
-    {/* </NavContainer> */}
+      <SearchbarContainer>
+        <Searchbar />
+      </SearchbarContainer>
       <Container>
         <GridContainer>
           <BlurImage />

@@ -1,22 +1,16 @@
 import Link from "next/link";
-import SearchNavbar from "./SearchNavBar";
+import SearchNavbar from "./SearchNavbar";
 
 const Navigator = ({ pathNames }) => {
   return (
-    <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        margin: "20px",
-      }}
-    >
-      <div style={{ display: "flex", gap: "15px" }}>
-        <p>PicsFree</p>
+    <nav className="flex justify-between p-3 bg-slate-700 shadow-lg">
+      <div className="flex items-center gap-4 ml-3">
+        <p className="hidden md:inline text-white">FreePics</p>
         <SearchNavbar />
       </div>
-      <ul style={{ display: "flex", gap: "15px" }}>
+      <ul className="hidden sm:flex gap-4 mr-3 items-center text-white">
         {pathNames.map((pathName) => (
-          <li key={pathName.name}>
+          <li className="bg-slate-600 hover:bg-slate-500 transition ease-in duration-200 cursor-pointer py-2 px-4 rounded-2xl" key={pathName.name}>
             <Link key={pathName.path} href={pathName.path}>
               {pathName.name}
             </Link>
