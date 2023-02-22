@@ -5,7 +5,7 @@ const Navigator = ({ pathNames }) => {
   return (
     <nav className="flex justify-between p-3 bg-slate-700 shadow-lg">
       <div className="flex items-center gap-4 ml-3">
-        <p className="hidden md:inline text-white">FreePics</p>
+        <p className="hidden md:inline text-white font-semibold text-xl tracking-wide">FreePics</p>
         <SearchNavbar />
       </div>
       <ul className="hidden sm:flex gap-4 mr-3 items-center text-white">

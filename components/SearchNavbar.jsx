@@ -13,7 +13,7 @@ const SearchNavbar = () => {
             </svg>
           </button>
           <input
-            className="py-2 px-16 pl-6 md:px-28 md:pl-6 bg-slate-100 text-gray-800 rounded-2xl focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fuchsia-400 ring-opacity-50"
+            className="py-2 px-16 pl-6 md:px-24 md:pl-6 bg-slate-100 text-gray-800 rounded-2xl focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fuchsia-400 ring-opacity-50"
             placeholder="Search for free images"
             type="text"
           />
