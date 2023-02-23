@@ -3,7 +3,7 @@ import SearchNavbar from "./SearchNavbar";
 
 const Navigator = ({ pathNames }) => {
   return (
-    <nav className="flex justify-between p-3 bg-slate-700 shadow-lg">
+    <nav className="flex justify-between p-3 bg-slate-700 shadow-lg fixed left-0 right-0 z-50">
       <div className="flex items-center gap-4 ml-3">
         <p className="hidden md:inline text-white font-semibold text-xl tracking-wide">FreePics</p>
         <SearchNavbar />
