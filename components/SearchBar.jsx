@@ -1,10 +1,16 @@
+import { faSortDown } from "@fortawesome/free-solid-svg-icons";
+import Icon from "./Icon";
+
 const Searchbar = () => {
   return (
     <>
       <div>
         <form>
           <label className="relative">
-            <button type="submit" className="absolute inset-y-1 right-5 flex items-center pl-2">
+            <button
+              type="submit"
+              className="absolute inset-y-1 right-5 flex items-center pl-2"
+            >
               <svg
                 className="h-5 w-5 fill-slate-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +28,9 @@ const Searchbar = () => {
         </form>
       </div>
       <div>
-        <button className="mt-5 py-3 px-7 sm:ml-3 sm:mt-0 bg-gradient-to-r from-fuchsia-400 to-blue-500 text-white w-full rounded-lg text-center text-base font-semibold tracking-wide hover:shadow-md">
-          Filters
+        <button className="flex justify-center items-center gap-1 py-2 px-10 mt-3 sm:px-5 sm:pl-2 sm:ml-3 sm:mt-0 bg-gradient-to-r from-fuchsia-400 to-blue-500 text-white w-full rounded-lg text-center text-base font-semibold tracking-wide">
+          <Icon icon={faSortDown} css='w-6 h-6 mb-2'/>
+          <p>Filters</p>
         </button>
       </div>
     </>

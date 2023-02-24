@@ -3,7 +3,10 @@ const SearchNavbar = () => {
     <div>
       <form>
         <label className="relative">
-          <button type="submit" className="absolute inset-y-1 right-5 flex items-center pl-2">
+          <button
+            type="submit"
+            className="absolute inset-y-1 right-5 flex items-center pl-2"
+          >
             <svg
               className="h-5 w-5 fill-slate-400"
               xmlns="http://www.w3.org/2000/svg"
