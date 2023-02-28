@@ -1,9 +1,18 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import Icon from "./Icon";
+"use client";
+
 import SearchNavbar from "./SearchNavbar";
+import Hamburguer from "./Hamburguer";
+import MobileSidebar from "./MobileSidebar";
+import DesktopNavbar from "./DesktopNavbar";
+import { useState } from "react";
 
 const Navigator = ({ pathNames }) => {
+  const [clicked, setClicked] = useState(false);
+
+  const showMenu = () => {
+    return setClicked(!clicked);
+  };
+
   return (
     <>
       <nav className="flex justify-between p-3 bg-slate-700 shadow-lg fixed left-0 right-0 z-40">
@@ -13,34 +22,11 @@ const Navigator = ({ pathNames }) => {
           </p>
           <SearchNavbar />
         </div>
-        <button>
-          <Icon icon={faBars} css='h-8 m-2 sm:hidden text-white'></Icon>
-        </button>
-        <ul className="hidden sm:flex gap-4 mr-3 items-center text-white">
-          {pathNames.map((pathName) => (
-            <li
-              className="bg-slate-600 hover:bg-slate-500 transition ease-in duration-200 cursor-pointer py-2 px-4 rounded-2xl"
-              key={pathName.name}
-            >
-              <Link key={pathName.path} href={pathName.path}>
-                {pathName.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Hamburguer showMenu={showMenu} />
+        {clicked ? <MobileSidebar pathNames={pathNames} /> : null}
+        <DesktopNavbar pathNames={pathNames} />
       </nav>
-      <ul className="flex flex-col h-60 w-64 justify-evenly bg-slate-700 text-white fixed top-20 rounded-xl right-0 z-50 sm:hidden">
-      {pathNames.map((pathName) => (
-            <li
-              key={pathName.name}
-            >
-              <Link key={pathName.path} href={pathName.path} className="p-7 pr-36">
-                {pathName.name}
-              </Link>
-            </li>
-          ))}
-      </ul>
-     </>
+    </>
   );
 };
 export default Navigator;
