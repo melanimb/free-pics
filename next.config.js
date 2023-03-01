@@ -5,8 +5,8 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['bit.ly'],
+    domains: ['images.pexels.com', 'pexels.com'],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

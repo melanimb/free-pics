@@ -1,6 +1,6 @@
 import {
-  BlurImage,
   Container,
+  Gallery,
   GridContainer,
   Searchbar,
   SearchbarContainer,
@@ -14,7 +14,7 @@ const App = () => {
       </SearchbarContainer>
       <Container>
         <GridContainer>
-          <BlurImage />
+          <Gallery />
         </GridContainer>
       </Container>
     </main>
