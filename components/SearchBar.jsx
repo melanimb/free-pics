@@ -1,11 +1,21 @@
+'use client'
+
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
+import useFetch from "app/services/useFetch.service";
+import { useState } from "react";
 import Icon from "./Icon";
 
 const Searchbar = () => {
+  const [query, setQuery] = useState("")
+
+  const sendRequest = () => {
+  const photos =  useFetch(`https://api.pexels.com/v1/search?query=${query}&per_page=15`)
+  }
+
   return (
     <>
       <div>
-        <form>
+        <form onSubmit={sendRequest()}>
           <label className="relative">
             <button
               type="submit"
@@ -23,6 +33,9 @@ const Searchbar = () => {
               className="py-3 px-40 pl-6 sm:py-4 sm:px-72 sm:pl-6 bg-slate-100 text-gray-800 rounded-2xl focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fuchsia-400 ring-opacity-50 shadow-md"
               placeholder="Search for free images"
               type="text"
+              name="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
           </label>
         </form>

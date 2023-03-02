@@ -1,30 +1,10 @@
 "use client";
 
-import { API_KEY, CURATED_URL, getPhotos } from "app/services";
-import { useEffect, useState } from "react";
+import useFetch from "app/services/useFetch.service";
 import BlurImage from "./BlurImage";
 
 const Gallery = () => {
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const getPhotos = async () => {
-    setLoading(true);
-    const res = await fetch(CURATED_URL, {
-      headers: {
-        Authorization: API_KEY,
-      },
-    });
-    const data = await res.json();
-    setLoading(false);
-    setPhotos(data.photos);
-  };
-
-  console.log(photos);
-
-  useEffect(() => {
-    getPhotos();
-  }, []);
+  const photos = useFetch("https://api.pexels.com/v1/curated?per_page=15");
 
   return (
     <>
@@ -32,7 +12,7 @@ const Gallery = () => {
         <BlurImage
           key={index}
           alt={photo.alt}
-          src={photo.src.medium}
+          src={photo.src.original}
           photographer={photo.photographer}
           photographer_url={photo.photographer_url}
         />

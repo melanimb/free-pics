@@ -1,1 +1,1 @@
-export * from './getImages.service';
+export * from './useFetch.service';
