@@ -1,7 +1,7 @@
 export { default as BlurImage } from './BlurImage';
 export { default as Container } from './Container';
 export { default as DesktopNavbar } from './DesktopNavbar';
-export { default as GridContainer } from './GridContainer';
+export { default as Gallery } from './Gallery';
 export { default as Hamburguer } from './Hamburguer';
 export { default as HeroImage } from './HeroImage';
 export { default as Icon } from './Icon';

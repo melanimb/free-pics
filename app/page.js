@@ -3,15 +3,13 @@
 import {
   BlurImage,
   Container,
-  GridContainer,
   Icon,
   SearchbarContainer,
+  Gallery,
 } from "components";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-
-const API_KEY =
-  "SM4Csl2Z1ZSwzIsllQgJeVjFMjPWg8D4S5XTJ1YJPa3WXbYz9rkisgEt";
+import { API_KEY } from "./services";
 
 const App = () => {
   const [query, setQuery] = useState("");
@@ -28,14 +26,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchImages("https://api.pexels.com/v1/curated?per_page=15");
+    fetchImages("https://api.pexels.com/v1/curated?page=1&per_page=15");
   }, []);
 
   console.log(photos);
 
   const sendRequest = (e, query) => {
     e.preventDefault()
-    fetchImages(`https://api.pexels.com/v1/search?query=${query}&per_page=15`)
+    fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=15`)
 
     return console.log(photos);
   };
@@ -78,7 +76,7 @@ const App = () => {
       </SearchbarContainer>
 
       <Container>
-        <GridContainer>
+        <Gallery>
           {photos.map((photo, index) => (
             <BlurImage
               key={index}
@@ -88,7 +86,7 @@ const App = () => {
               photographer_url={photo.photographer_url}
             />
           ))}
-        </GridContainer>
+        </Gallery>
       </Container>
     </main>
   );

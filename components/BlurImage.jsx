@@ -12,8 +12,8 @@ export default function BlurImage({ alt, src, photographer, photographer_url }) 
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <button onClick={null}>
-      <div className="w-full bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+    <button className="mb-4" onClick={null}>
+      <div className="w-full bg-gray-200 rounded-lg overflow-hidden">
         <Image
           alt={alt}
           width="500"
