@@ -28,7 +28,7 @@ export default function BlurImage({ alt, src, photographer, photographer_url }) 
           onLoadingComplete={() => setLoading(false)}
         />
       </div>
-      <Link href={photographer_url} className="mt-4 text-sm text-slate-700">{photographer}</Link>
+      <Link href={photographer_url} className="text-sm text-slate-700">{photographer}</Link>
     </button>
   );
 }
