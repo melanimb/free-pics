@@ -1,10 +1,10 @@
-import { routes } from "models";
-import { Navigator } from "components";
-import "../styles/globals.css";
+import { routes } from 'models'
+import { Navigator } from 'components'
+import '../styles/globals.css'
 
-export default function RootLayout({ children }) {
+export default function RootLayout ({ children }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <head />
       <body>
         <header>
@@ -15,5 +15,5 @@ export default function RootLayout({ children }) {
         {children}
       </body>
     </html>
-  );
+  )
 }

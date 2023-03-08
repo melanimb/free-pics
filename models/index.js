@@ -1,1 +1,1 @@
-export * from './routes.models';
+export * from './routes.models'

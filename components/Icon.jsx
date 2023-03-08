@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Icon = ({ icon, css }) => {
   return (
     <div>
       <FontAwesomeIcon icon={icon} className={css} />
     </div>
-  );
-};
-export default Icon;
+  )
+}
+export default Icon

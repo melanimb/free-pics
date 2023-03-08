@@ -1,1 +1,1 @@
-export * from './useFetch.service';
+export * from './useFetch.service'
