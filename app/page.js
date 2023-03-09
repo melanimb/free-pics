@@ -10,10 +10,12 @@ import {
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { API_KEY } from './services'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 const App = () => {
-  const [query, setQuery] = useState('')
   const [photos, setPhotos] = useState([])
+  const [query, setQuery] = useState('')
+  const [page, setPage] = useState(1)
 
   const fetchImages = (url) => {
     fetch(url, {
@@ -22,20 +24,28 @@ const App = () => {
       }
     })
       .then((res) => res.json())
-      .then((data) => setPhotos(data.photos))
+      .then((data) => setPhotos([...photos, ...data.photos]))
       .catch((error) => console.log(error.message))
   }
 
   useEffect(() => {
-    fetchImages('https://api.pexels.com/v1/curated?page=1&per_page=15')
+    fetchImages('https://api.pexels.com/v1/curated?page=1&per_page=12')
   }, [])
-
-  console.log(photos)
 
   const sendRequest = (e, query) => {
     e.preventDefault()
-    fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=15`)
+    fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`)
+    e.target.reset()
   }
+
+  // falta hacer lógica para query photos
+  const getMorePhotos = () => {
+    setPage(page => page + 1)
+    console.log(page)
+    fetchImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
+  }
+
+  console.log(photos)
 
   return (
     <main>
@@ -75,17 +85,25 @@ const App = () => {
       </SearchbarContainer>
 
       <Container>
-        <Gallery>
-          {photos.map((photo, index) => (
-            <BlurImage
-              key={index}
-              alt={photo.alt}
-              src={photo.src.large}
-              photographer={photo.photographer}
-              photographer_url={photo.photographer_url}
-            />
-          ))}
-        </Gallery>
+        <InfiniteScroll
+          dataLength={photos.length}
+          next={getMorePhotos}
+          hasMore
+          loader={<h4>Loading...</h4>}
+          endMessage={<h4>You have seen it all</h4>}
+        >
+          <Gallery>
+            {photos.map((photo, index) => (
+              <BlurImage
+                key={index}
+                alt={photo.alt}
+                src={photo.src.large}
+                photographer={photo.photographer}
+                photographer_url={photo.photographer_url}
+              />
+            ))}
+          </Gallery>
+        </InfiniteScroll>
       </Container>
     </main>
   )
