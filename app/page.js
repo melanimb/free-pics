@@ -29,20 +29,18 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchImages('https://api.pexels.com/v1/curated?page=1&per_page=12')
-  }, [])
+    console.log(page)
+    fetchImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
+  }, [page])
 
   const sendRequest = (e, query) => {
     e.preventDefault()
-    fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`)
-    e.target.reset()
+    fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
   }
 
   // falta hacer lógica para query photos
   const getMorePhotos = () => {
     setPage(page => page + 1)
-    console.log(page)
-    fetchImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
   }
 
   console.log(photos)
@@ -89,8 +87,6 @@ const App = () => {
           dataLength={photos.length}
           next={getMorePhotos}
           hasMore
-          loader={<h4>Loading...</h4>}
-          endMessage={<h4>You have seen it all</h4>}
         >
           <Gallery>
             {photos.map((photo, index) => (
