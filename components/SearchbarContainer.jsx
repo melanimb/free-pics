@@ -10,7 +10,8 @@ const SearchbarContainer = ({ children }) => {
           FreePics
         </h1>
         {children}
-        <Link href='https://www.pexels.com' className='text-white absolute bottom-2 left-4'>Photos provided by Pexels</Link>
+        <Link href='https://www.pexels.com' className='text-white opacity-90 absolute bottom-2 left-4'>Photos provided by Pexels</Link>
+        <Link href='https://www.pexels.com/es-es/@iriser/' className='text-white opacity-70 absolute bottom-2 right-4'>Photo by Irina Iriser</Link>
       </div>
     </>
   )
