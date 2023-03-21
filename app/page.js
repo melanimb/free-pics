@@ -13,54 +13,41 @@ import { API_KEY } from './services'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const App = () => {
-  const [curatedPhotos, setCuratedPhotos] = useState([])
-  const [searchedPhotos, setSearchedPhotos] = useState([])
+  const [photos, setPhotos] = useState([])
+  const [newPhotos, setNewPhotos] = useState([])
   const [showCurated, setShowCurated] = useState(true)
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
 
-  // get default images from api
-  const fetchCuratedImages = (url) => {
+  const fetchImages = (url) => {
     fetch(url, {
       headers: {
         Authorization: API_KEY
       }
     })
       .then((res) => res.json())
-      .then((data) => setCuratedPhotos([...curatedPhotos, ...data.photos]))
-      .catch((error) => console.log(error.message))
-  }
-
-  // get searched images by user
-  const fetchSearchedImages = (url) => {
-    fetch(url, {
-      headers: {
-        Authorization: API_KEY
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => setSearchedPhotos([...searchedPhotos, ...data.photos]))
+      .then((data) => showCurated ? setPhotos([...photos, ...data.photos]) : setNewPhotos([...newPhotos, ...data.photos]))
       .catch((error) => console.log(error.message))
   }
 
   useEffect(() => {
-    console.log(page)
     showCurated
-      ? fetchCuratedImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
-      : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
-  }, [page])
+      ? fetchImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
+      : fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
+  }, [page, showCurated])
 
   const sendRequest = (e, query) => {
     e.preventDefault()
     setShowCurated(false)
-    fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
+    fetchImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
   }
 
   const getNextPage = () => {
     setPage(page => page + 1)
   }
 
-  console.log(curatedPhotos)
+  console.log('curated', photos)
+  console.log('new', newPhotos)
 
   return (
     <main>
@@ -101,14 +88,14 @@ const App = () => {
 
       <Container>
         <InfiniteScroll
-          dataLength={showCurated ? curatedPhotos.length : searchedPhotos}
+          dataLength={showCurated ? photos.length : newPhotos.length}
           next={getNextPage}
           hasMore
         >
           <Gallery>
             {(showCurated
-              ? curatedPhotos
-              : searchedPhotos).map((photo, index) => (
+              ? photos
+              : newPhotos).map((photo, index) => (
                 <BlurImage
                   key={index}
                   alt={photo.alt}
