@@ -14,7 +14,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
 
   return (
     <button className='mb-4' onClick={null}>
-      <div className='w-full bg-gray-200 rounded-lg overflow-hidden'>
+      <div className='w-fit bg-gray-200 rounded-lg overflow-hidden'>
         <Image
           alt={alt}
           width='500'
