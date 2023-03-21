@@ -39,7 +39,9 @@ const App = () => {
       }
     })
       .then((res) => res.json())
-      .then((data) => page > 1 ? setSearchedPhotos([...searchedPhotos, ...data.photos]) : setSearchedPhotos(data.photos))
+      .then((data) => page > 1
+        ? setSearchedPhotos([...searchedPhotos, ...data.photos])
+        : setSearchedPhotos(data.photos))
       .catch((error) => console.log(error.message))
   }
 
@@ -52,9 +54,11 @@ const App = () => {
 
   const sendRequest = (e, query) => {
     e.preventDefault()
-    setShowCurated(false)
-    setPage(1)
-    fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
+    if (query !== '') {
+      setShowCurated(false)
+      setPage(1)
+      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
+    }
   }
 
   const getNextPage = () => {
