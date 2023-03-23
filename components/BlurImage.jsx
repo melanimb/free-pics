@@ -14,14 +14,20 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
   const [isLoading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
 
+  const closeModal = () => {
+    return (
+      setShowModal(false)
+    )
+  }
+
   return (
     <article>
       <button className='mb-4' onClick={() => setShowModal(true)}>
         <div className='w-fit bg-gray-200 rounded-lg overflow-hidden'>
           <Image
             alt={alt}
-            width='500'
-            height='500'
+            width='550'
+            height='550'
             src={src}
             className={cn(
               'hover:opacity-70 duration-700 ease-in-out',
@@ -34,7 +40,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
         </div>
         <Link href={photographer_url} className='text-sm text-slate-700'>{photographer}</Link>
       </button>
-      {showModal ? <ImgModal alt={alt} src={src} /> : null}
+      {showModal ? <ImgModal alt={alt} src={src} closeModal={closeModal} /> : null}
     </article>
   )
 }
