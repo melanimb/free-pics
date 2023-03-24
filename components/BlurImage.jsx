@@ -26,8 +26,8 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
         <div className='w-fit bg-gray-200 rounded-lg overflow-hidden'>
           <Image
             alt={alt}
-            width='550'
-            height='550'
+            width='500'
+            height='700'
             src={src}
             className={cn(
               'hover:opacity-70 duration-700 ease-in-out',
