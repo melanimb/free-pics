@@ -3,7 +3,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ImgModal from './ImgModal'
 
 function cn (...classes) {
@@ -19,6 +19,12 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
       setShowModal(false)
     )
   }
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden'
+    }
+  }, [showModal])
 
   return (
     <article>
@@ -40,7 +46,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
         </div>
         <Link href={photographer_url} className='text-sm text-slate-700'>{photographer}</Link>
       </button>
-      {showModal ? <ImgModal alt={alt} src={src} closeModal={closeModal} /> : null}
+      {showModal && <ImgModal alt={alt} src={src} closeModal={closeModal} />}
     </article>
   )
 }

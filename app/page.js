@@ -2,10 +2,10 @@
 
 import {
   BlurImage,
-  Container,
+  GalleryContainer,
   Icon,
   SearchbarContainer,
-  Gallery
+  GalleryLayout
 } from 'components'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
@@ -105,13 +105,13 @@ const App = () => {
         </div>
       </SearchbarContainer>
 
-      <Container>
+      <GalleryContainer>
         <InfiniteScroll
           dataLength={showCurated ? curatedPhotos.length : searchedPhotos}
           next={getNextPage}
           hasMore
         >
-          <Gallery>
+          <GalleryLayout>
             {(showCurated
               ? curatedPhotos
               : searchedPhotos).map((photo, index) => (
@@ -123,9 +123,9 @@ const App = () => {
                   photographer_url={photo.photographer_url}
                 />
             ))}
-          </Gallery>
+          </GalleryLayout>
         </InfiniteScroll>
-      </Container>
+      </GalleryContainer>
     </main>
   )
 }
