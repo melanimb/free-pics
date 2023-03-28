@@ -1,5 +1,3 @@
-// app routes
-
 export const routes = {
   HOME: {
     path: '/',

@@ -1,5 +1,6 @@
 export { default as BlurImage } from './BlurImage'
 export { default as DesktopNavbar } from './DesktopNavbar'
+export { default as DropdownMenu } from './DropdownMenu'
 export { default as GalleryContainer } from './GalleryContainer'
 export { default as GalleryLayout } from './GalleryLayout'
 export { default as Hamburguer } from './Hamburguer'

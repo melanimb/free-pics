@@ -23,7 +23,7 @@ const Navigator = ({ pathNames }) => {
           <SearchNavbar />
         </div>
         <Hamburguer showMenu={showMenu} />
-        {clicked ? <MobileSidebar pathNames={pathNames} /> : null}
+        {clicked && <MobileSidebar pathNames={pathNames} />}
         <DesktopNavbar pathNames={pathNames} />
       </nav>
     </>

@@ -3,7 +3,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ImgModal from './ImgModal'
 
 function cn (...classes) {
@@ -19,12 +19,6 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
       setShowModal(false)
     )
   }
-
-  useEffect(() => {
-    if (showModal) {
-      document.body.style.overflow = 'hidden'
-    }
-  }, [showModal])
 
   return (
     <article>
