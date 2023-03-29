@@ -9,7 +9,7 @@ import {
 } from 'components'
 import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
-import { API_KEY } from './services'
+import { fetchCuratedImages, fetchSearchedImages } from './services'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const App = () => {
@@ -19,36 +19,10 @@ const App = () => {
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
 
-  // get default images from api
-  const fetchCuratedImages = (url) => {
-    fetch(url, {
-      headers: {
-        Authorization: API_KEY
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => setCuratedPhotos([...curatedPhotos, ...data.photos]))
-      .catch((error) => console.log(error.message))
-  }
-
-  // get searched images by user
-  const fetchSearchedImages = (url) => {
-    fetch(url, {
-      headers: {
-        Authorization: API_KEY
-      }
-    })
-      .then((res) => res.json())
-      .then((data) => page > 1
-        ? setSearchedPhotos([...searchedPhotos, ...data.photos])
-        : setSearchedPhotos(data.photos))
-      .catch((error) => console.log(error.message))
-  }
-
   useEffect(() => {
     showCurated
-      ? fetchCuratedImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
-      : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
+      ? fetchCuratedImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`, curatedPhotos, setCuratedPhotos)
+      : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`, searchedPhotos, setSearchedPhotos, page)
   }, [page])
 
   const sendRequest = (e, query) => {
@@ -56,7 +30,7 @@ const App = () => {
     if (query !== '') {
       setShowCurated(false)
       setPage(() => 1)
-      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`)
+      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`, searchedPhotos, setSearchedPhotos, page)
     }
   }
 
