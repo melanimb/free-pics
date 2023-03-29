@@ -46,7 +46,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(page)
     showCurated
       ? fetchCuratedImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`)
       : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
@@ -56,8 +55,8 @@ const App = () => {
     e.preventDefault()
     if (query !== '') {
       setShowCurated(false)
-      setPage(1)
-      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=${page}&per_page=12`)
+      setPage(() => 1)
+      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`)
     }
   }
 
@@ -65,8 +64,7 @@ const App = () => {
     setPage(page => page + 1)
   }
 
-  console.log('curatedPhotos', curatedPhotos)
-  console.log('searchedPhotos', searchedPhotos)
+  console.log(searchedPhotos)
 
   return (
     <main>
@@ -107,7 +105,7 @@ const App = () => {
 
       <GalleryContainer>
         <InfiniteScroll
-          dataLength={showCurated ? curatedPhotos.length : searchedPhotos}
+          dataLength={showCurated ? curatedPhotos.length : searchedPhotos.length}
           next={getNextPage}
           hasMore
         >
