@@ -24,6 +24,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
             width='500'
             height='700'
             src={src}
+            priority
             className={cn(
               'hover:opacity-70 duration-700 ease-in-out',
               isLoading

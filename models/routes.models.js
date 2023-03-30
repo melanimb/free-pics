@@ -4,11 +4,11 @@ export const routes = {
     name: 'Home'
   },
   ABOUT_US: {
-    path: '*',
+    path: '/',
     name: 'About us'
   },
   CONTACT_US: {
-    path: '*',
+    path: '/',
     name: 'Contact us'
   }
 }
