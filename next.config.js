@@ -2,11 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: true,
+    appDir: true
   },
   images: {
-    domains: ['images.pexels.com', 'pexels.com'],
-  },
-};
+    domains: ['images.pexels.com', 'pexels.com']
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

@@ -4,6 +4,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import ImgModal from './ImgModal'
 
 function cn (...classes) {
@@ -13,12 +14,6 @@ function cn (...classes) {
 export default function BlurImage ({ alt, src, photographer, photographer_url }) {
   const [isLoading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
-
-  const closeModal = () => {
-    return (
-      setShowModal(false)
-    )
-  }
 
   return (
     <article>
@@ -40,7 +35,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
         </div>
         <Link href={photographer_url} className='text-sm text-slate-700'>{photographer}</Link>
       </button>
-      {showModal && <ImgModal alt={alt} src={src} closeModal={closeModal} />}
+      {showModal && createPortal(<ImgModal alt={alt} src={src} closeModal={() => setShowModal(false)} />, document.getElementById('modalPortal'))}
     </article>
   )
 }

@@ -7,6 +7,7 @@ export default function RootLayout ({ children }) {
     <html lang='en'>
       <head />
       <body>
+        <div id='modalPortal' />
         <header>
           <Navigator
             pathNames={[routes.HOME, routes.ABOUT_US, routes.CONTACT_US]}
