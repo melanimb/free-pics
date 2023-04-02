@@ -1,6 +1,5 @@
 'use client'
 
-import SearchNavbar from './SearchNavbar'
 import Hamburguer from './Hamburguer'
 import MobileSidebar from './MobileSidebar'
 import DesktopNavbar from './DesktopNavbar'
@@ -20,7 +19,6 @@ const Navigator = ({ pathNames }) => {
           <p className='hidden md:inline text-white font-semibold text-xl tracking-wide'>
             FreePics
           </p>
-          <SearchNavbar />
         </div>
         <Hamburguer showMenu={showMenu} />
         {clicked && <MobileSidebar pathNames={pathNames} />}

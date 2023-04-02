@@ -31,7 +31,7 @@ const ImgModal = ({ alt, src, closeModal }) => {
             </button>
             <div className='relative'>
               <button
-                className='flex py-3 pl-7 pr-5 rounded-md bg-gradient-to-r from-fuchsia-400 to-blue-500 text-white'
+                className='flex py-3 pl-7 pr-5 rounded-md bg-gradient-to-r from-fuchsia-400 to-blue-500 hover:bg-gradient-to-l text-white'
                 onClick={(e) => handleButtonClick(e)}
               >
                 <p className='text-xl font-medium tracking-wide'>Download</p>
