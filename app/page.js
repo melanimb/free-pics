@@ -43,7 +43,7 @@ const App = () => {
       fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`, searchedPhotos, setSearchedPhotos, page)
     }
     resetQuery()
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 550)
   }
 
   const getNextPage = () => {

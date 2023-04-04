@@ -4,11 +4,10 @@ import { useState } from 'react'
 
 const NavSearchbar = ({ sendRequest }) => {
   const [query, setQuery] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const resetQuery = () => {
     setQuery('')
-    setIsSubmitted(true)
+    document.getElementById('navInput').blur()
   }
 
   return (
@@ -33,6 +32,7 @@ const NavSearchbar = ({ sendRequest }) => {
             type='text'
             name='search'
             value={query}
+            id='navInput'
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>

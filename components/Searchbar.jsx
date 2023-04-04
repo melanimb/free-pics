@@ -9,6 +9,7 @@ const Searchbar = ({ sendRequest }) => {
 
   const resetQuery = () => {
     setQuery('')
+    document.getElementById('input').blur()
   }
 
   return (
@@ -33,6 +34,7 @@ const Searchbar = ({ sendRequest }) => {
               placeholder='Search for free images'
               type='text'
               name='search'
+              id='input'
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
