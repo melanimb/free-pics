@@ -11,10 +11,8 @@ export const getPhotoSmall = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      // https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg?auto=compress&cs=tinysrgb&h=960
       const baseUrl = data.src.original
-      const imageUrl = baseUrl + '?auto=compress&cs=tinysrgb&h=960&w=640'
-      console.log(imageUrl)
+      const imageUrl = baseUrl + '?auto=compress&cs=tinysrgb&w=640'
       fetch(imageUrl)
         .then(res => res.blob())
         .then((blob) => {

@@ -11,7 +11,8 @@ export const getPhotoLarge = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      const imageUrl = data.src.large
+      const baseUrl = data.src.original
+      const imageUrl = baseUrl + '?auto=compress&cs=tinysrgb&w=1920'
       fetch(imageUrl)
         .then(res => res.blob())
         .then((blob) => {
