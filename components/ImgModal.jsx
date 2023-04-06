@@ -37,7 +37,7 @@ const ImgModal = ({ alt, src, closeModal, id }) => {
                 <p className='text-xl font-medium tracking-wide'>Download</p>
                 <Icon icon={faSortDown} css='w-6 h-6 ml-1 -mt-1' />
               </button>
-              {showSizes && <DropdownMenu sizes={[imgSizes.ORIGINAL, imgSizes.LARGE, imgSizes.MEDIUM, imgSizes.SMALL]} id={id} />}
+              {showSizes && <DropdownMenu sizes={[imgSizes.LARGE, imgSizes.MEDIUM, imgSizes.SMALL, imgSizes.ORIGINAL]} id={id} />}
             </div>
           </div>
           <div className='flex items-center justify-center h-[90%]'>

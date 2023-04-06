@@ -11,8 +11,7 @@ export const getPhotoOriginal = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      const baseUrl = data.src.original
-      const imageUrl = baseUrl + '?auto=compress&cs=tinysrgb&w=4160'
+      const imageUrl = data.src.original
       fetch(imageUrl)
         .then(res => res.blob())
         .then((blob) => {

@@ -1,7 +1,7 @@
 import { getPhotoLarge, getPhotoMedium, getPhotoOriginal, getPhotoSmall } from 'app/services'
 
-const getPhoto = (id, size) => {
-  switch (size) {
+const getPhoto = (id, name) => {
+  switch (name) {
     case 'Original ':
       getPhotoOriginal(id)
       break
