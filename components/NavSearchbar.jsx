@@ -1,13 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const NavSearchbar = ({ sendRequest }) => {
   const [query, setQuery] = useState('')
+  const navInput = useRef()
 
   const resetQuery = () => {
     setQuery('')
-    document.getElementById('navInput').blur()
+    navInput.current.blur()
   }
 
   return (
@@ -32,7 +33,7 @@ const NavSearchbar = ({ sendRequest }) => {
             type='text'
             name='search'
             value={query}
-            id='navInput'
+            ref={navInput}
             onChange={(e) => setQuery(e.target.value)}
           />
         </label>

@@ -11,7 +11,7 @@ function cn (...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function BlurImage ({ alt, src, photographer, photographer_url }) {
+export default function BlurImage ({ alt, src, photographer, photographer_url, id }) {
   const [isLoading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
 
@@ -35,7 +35,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url })
         </div>
         <Link href={photographer_url} className='text-sm text-slate-700'>{photographer}</Link>
       </button>
-      {showModal && createPortal(<ImgModal alt={alt} src={src} closeModal={() => setShowModal(false)} />, document.getElementById('modalPortal'))}
+      {showModal && createPortal(<ImgModal alt={alt} src={src} closeModal={() => setShowModal(false)} id={id} />, document.getElementById('modalPortal'))}
     </article>
   )
 }

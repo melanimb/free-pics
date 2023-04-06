@@ -41,9 +41,9 @@ const App = () => {
       setShowCurated(false)
       setPage(() => 1)
       fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`, searchedPhotos, setSearchedPhotos, page)
+      resetQuery()
+      window.scrollTo(0, 550)
     }
-    resetQuery()
-    window.scrollTo(0, 550)
   }
 
   const getNextPage = () => {
@@ -75,6 +75,7 @@ const App = () => {
                   src={photo.src.portrait}
                   photographer={photo.photographer}
                   photographer_url={photo.photographer_url}
+                  id={photo.id}
                 />
             ))}
           </GalleryLayout>

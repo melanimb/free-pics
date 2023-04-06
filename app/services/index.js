@@ -1,3 +1,7 @@
 export * from './API_KEY.service'
 export * from './fetchCuratedImages.service'
 export * from './fetchSearchedImages.service'
+export * from './getPhotoLarge.service'
+export * from './getPhotoMedium.service'
+export * from './getPhotoOriginal.service'
+export * from './getPhotoSmall.service'

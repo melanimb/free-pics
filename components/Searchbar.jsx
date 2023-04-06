@@ -2,14 +2,15 @@
 
 // import { faSortDown } from '@fortawesome/free-solid-svg-icons'
 // import Icon from "./Icon"
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const Searchbar = ({ sendRequest }) => {
   const [query, setQuery] = useState('')
+  const input = useRef()
 
   const resetQuery = () => {
     setQuery('')
-    document.getElementById('input').blur()
+    input.current.blur()
   }
 
   return (
@@ -34,7 +35,7 @@ const Searchbar = ({ sendRequest }) => {
               placeholder='Search for free images'
               type='text'
               name='search'
-              id='input'
+              ref={input}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />

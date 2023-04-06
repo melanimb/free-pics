@@ -8,7 +8,7 @@ import { RemoveScroll } from 'react-remove-scroll'
 import DropdownMenu from './DropdownMenu'
 import Icon from './Icon'
 
-const ImgModal = ({ alt, src, closeModal }) => {
+const ImgModal = ({ alt, src, closeModal, id }) => {
   const [showSizes, setShowSizes] = useState(false)
 
   const handleArticleClick = (e) => {
@@ -37,7 +37,7 @@ const ImgModal = ({ alt, src, closeModal }) => {
                 <p className='text-xl font-medium tracking-wide'>Download</p>
                 <Icon icon={faSortDown} css='w-6 h-6 ml-1 -mt-1' />
               </button>
-              {showSizes && <DropdownMenu sizes={[imgSizes.ORIGINAL, imgSizes.LARGE, imgSizes.MEDIUM, imgSizes.SMALL]} />}
+              {showSizes && <DropdownMenu sizes={[imgSizes.ORIGINAL, imgSizes.LARGE, imgSizes.MEDIUM, imgSizes.SMALL]} id={id} />}
             </div>
           </div>
           <div className='flex items-center justify-center h-[90%]'>
