@@ -11,14 +11,18 @@ export const getPhotoSmall = (id) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      const imageUrl = data.src.small
+      // https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg?auto=compress&cs=tinysrgb&h=960
+      const baseUrl = data.src.original
+      const imageUrl = baseUrl + '?auto=compress&cs=tinysrgb&h=960&w=640'
+      console.log(imageUrl)
       fetch(imageUrl)
         .then(res => res.blob())
         .then((blob) => {
           const url = window.URL.createObjectURL(new Blob([blob]))
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute('download', 'image.jpg')
+          const timestamp = Math.floor(Date.now() / 1000)
+          link.setAttribute('download', `${timestamp}.jpg`)
           document.body.appendChild(link)
           link.click()
           link.parentNode.removeChild(link)

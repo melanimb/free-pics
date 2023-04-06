@@ -18,7 +18,8 @@ export const getPhotoOriginal = (id) => {
           const url = window.URL.createObjectURL(new Blob([blob]))
           const link = document.createElement('a')
           link.href = url
-          link.setAttribute('download', 'image.jpg')
+          const timestamp = Math.floor(Date.now() / 1000)
+          link.setAttribute('download', `${timestamp}.jpg`)
           document.body.appendChild(link)
           link.click()
           link.parentNode.removeChild(link)
