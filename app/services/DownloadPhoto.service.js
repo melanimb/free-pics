@@ -1,6 +1,6 @@
 import { API_KEY } from './API_KEY.service'
 
-export const getPhotoSmall = (id) => {
+export const DownloadPhoto = (id, size) => {
   const { Blob } = window
 
   const url = `https://api.pexels.com/v1/photos/${id}`
@@ -12,7 +12,7 @@ export const getPhotoSmall = (id) => {
     .then((res) => res.json())
     .then((data) => {
       const baseUrl = data.src.original
-      const imageUrl = baseUrl + '?auto=compress&cs=tinysrgb&w=640'
+      const imageUrl = `${baseUrl}?auto=compress&cs=tinysrgb&w=${size}`
       fetch(imageUrl)
         .then(res => res.blob())
         .then((blob) => {

@@ -27,11 +27,9 @@ const App = () => {
   }, [page])
 
   useEffect(() => {
-    if (!showCurated && searchedPhotos.length === 0) {
-      setNotFound(true)
-    } else {
-      setNotFound(false)
-    }
+    !showCurated && searchedPhotos.length === 0
+      ? setNotFound(true)
+      : setNotFound(false)
   }, [searchedPhotos])
 
   const sendRequest = (e, query, resetQuery) => {
@@ -42,15 +40,12 @@ const App = () => {
       setPage(() => 1)
       fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`, searchedPhotos, setSearchedPhotos, page)
       resetQuery()
-      window.scrollTo(0, 550)
     }
   }
 
   const getNextPage = () => {
     setPage(page => page + 1)
   }
-
-  console.log(searchedPhotos)
 
   return (
     <main>
@@ -76,6 +71,8 @@ const App = () => {
                   photographer={photo.photographer}
                   photographer_url={photo.photographer_url}
                   id={photo.id}
+                  width={photo.width}
+                  height={photo.height}
                 />
             ))}
           </GalleryLayout>

@@ -9,6 +9,7 @@ const NavSearchbar = ({ sendRequest }) => {
   const resetQuery = () => {
     setQuery('')
     navInput.current.blur()
+    window.scrollTo(0, 550)
   }
 
   return (
