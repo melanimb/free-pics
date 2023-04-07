@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     showCurated
       ? fetchCuratedImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`, curatedPhotos, setCuratedPhotos)
-      : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${formQuery}&page=${page}&per_page=12`, searchedPhotos, setSearchedPhotos, page)
+      : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${formQuery}&page=${page}&per_page=12&locale=es-ES`, searchedPhotos, setSearchedPhotos, page)
   }, [page])
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const App = () => {
     if (query !== '') {
       setShowCurated(false)
       setPage(() => 1)
-      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12`, searchedPhotos, setSearchedPhotos, page)
+      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12&locale=es-ES`, searchedPhotos, setSearchedPhotos, page)
       resetQuery()
     }
   }
