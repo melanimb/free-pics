@@ -17,7 +17,7 @@ export default function BlurImage ({ alt, src, photographer, photographer_url, i
 
   return (
     <article className='m-auto'>
-      <button className='mb-4' onClick={() => setShowModal(true)}>
+      <button onClick={() => setShowModal(true)}>
         <div className='w-fit bg-gray-200 rounded-lg overflow-hidden'>
           <Image
             alt={alt}
