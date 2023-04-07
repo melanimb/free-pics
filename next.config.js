@@ -6,6 +6,9 @@ const nextConfig = {
   },
   images: {
     domains: ['images.pexels.com', 'pexels.com']
+  },
+  env: {
+    PEXELS_API_KEY: process.env.PEXELS_API_KEY
   }
 }
 

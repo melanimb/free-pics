@@ -1,12 +1,10 @@
-import { API_KEY } from './API_KEY.service'
-
 export const DownloadPhoto = (id, size) => {
   const { Blob } = window
 
   const url = `https://api.pexels.com/v1/photos/${id}`
   fetch(url, {
     headers: {
-      Authorization: API_KEY
+      Authorization: process.env.PEXELS_API_KEY
     }
   })
     .then((res) => res.json())
