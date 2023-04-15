@@ -15,7 +15,7 @@ const Searchbar = ({ sendRequest }) => {
 
   return (
     <>
-      <div>
+      <div className='mx-2 sm:w-[40rem]'>
         <form onSubmit={(e) => sendRequest(e, query, resetQuery)}>
           <label className='relative'>
             <button
@@ -31,7 +31,7 @@ const Searchbar = ({ sendRequest }) => {
               </svg>
             </button>
             <input
-              className='py-3 px-40 pl-6 sm:py-4 sm:px-72 sm:pl-6 bg-slate-100 text-gray-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-fuchsia-400'
+              className='py-4 w-full pl-6 bg-slate-100 text-gray-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-fuchsia-400'
               placeholder='Search for free images'
               type='text'
               name='search'
@@ -41,6 +41,7 @@ const Searchbar = ({ sendRequest }) => {
             />
           </label>
         </form>
+        <p className='text-white opacity-70 mt-2'>Try with: Moon, Earth, Landscape, Animal, Nature, Ice...</p>
       </div>
       {/* <div>
             <button className='flex justify-center items-center gap-1 py-2 px-10 mt-3 sm:px-5 sm:pl-2 sm:ml-3 sm:mt-0 bg-gradient-to-r from-fuchsia-400 to-blue-500 hover:bg-gradient-to-l text-white w-full rounded-lg text-center text-base font-semibold tracking-wide'>

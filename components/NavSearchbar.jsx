@@ -13,12 +13,12 @@ const NavSearchbar = ({ sendRequest }) => {
   }
 
   return (
-    <div className='fixed left-5 top-3 md:left-32 z-40'>
+    <div className='max-[280px]:w-[12.5rem] w-[17rem] md:w-[18rem] lg:w-[25rem] fixed left-5 top-3 md:left-32 z-40'>
       <form onSubmit={(e) => sendRequest(e, query, resetQuery)}>
         <label className='relative'>
           <button
             type='submit'
-            className='absolute inset-y-1 right-5 flex items-center pl-2'
+            className='max-[280px]:hidden absolute inset-y-1 right-5 flex items-center pl-2'
           >
             <svg
               className='h-5 w-5 fill-slate-400'
@@ -29,7 +29,7 @@ const NavSearchbar = ({ sendRequest }) => {
             </svg>
           </button>
           <input
-            className='py-2 px-16 pl-6 md:px-24 md:pl-6 bg-slate-100 text-gray-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-fuchsia-400'
+            className='py-2 pl-6 w-full bg-slate-100 text-gray-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-fuchsia-400'
             placeholder='Search for free images'
             type='text'
             name='search'
