@@ -27,9 +27,12 @@ const App = () => {
   }, [page])
 
   useEffect(() => {
-    !showCurated && searchedPhotos.length === 0
-      ? setNotFound(true)
-      : setNotFound(false)
+    if (!showCurated && searchedPhotos.length === 0) {
+      setNotFound(true)
+    } else {
+      setNotFound(false)
+      window.scrollTo(0, 550)
+    }
   }, [searchedPhotos])
 
   const sendRequest = (e, query, resetQuery) => {
