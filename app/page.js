@@ -29,7 +29,7 @@ const App = () => {
   useEffect(() => {
     if (!showCurated && searchedPhotos.length === 0) {
       setNotFound(true)
-    } else {
+    } else if (page === 1) {
       setNotFound(false)
       window.scrollTo(0, 550)
     }
