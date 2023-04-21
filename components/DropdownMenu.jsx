@@ -1,4 +1,4 @@
-import { DownloadPhoto } from 'app/services'
+import { DownloadPhoto } from '../app/services'
 
 const getPhoto = (id, name, size) => {
   const SIZE_NAMES = {

@@ -1,7 +1,7 @@
 'use client'
 
 import { faSortDown, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { imgSizes } from 'models'
+import { imgSizes } from '../models'
 import Image from 'next/image'
 import { useState } from 'react'
 import { RemoveScroll } from 'react-remove-scroll'

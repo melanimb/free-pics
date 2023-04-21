@@ -7,7 +7,7 @@ import {
   BlurImage,
   Searchbar,
   NavSearchbar
-} from 'components'
+} from '../components'
 import { useEffect, useState } from 'react'
 import { fetchCuratedImages, fetchSearchedImages } from './services'
 import InfiniteScroll from 'react-infinite-scroll-component'

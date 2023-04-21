@@ -1,5 +1,5 @@
-import { routes } from 'models'
-import { Navigator } from 'components'
+import { routes } from '../models'
+import { Navigator } from '../components'
 import '../styles/globals.css'
 
 export default function RootLayout ({ children }) {
