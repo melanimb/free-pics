@@ -8,46 +8,28 @@ import {
   Searchbar,
   NavSearchbar
 } from 'components'
-import { useEffect, useState } from 'react'
-import { fetchCuratedImages, fetchSearchedImages } from './services'
+import { useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { useSearchPhotos, useCuratedPhotos, usePage, useNotFound } from './hooks'
 
 const App = () => {
-  const [curatedPhotos, setCuratedPhotos] = useState([])
-  const [searchedPhotos, setSearchedPhotos] = useState([])
   const [showCurated, setShowCurated] = useState(true)
-  const [page, setPage] = useState(1)
-  const [notFound, setNotFound] = useState(false)
   const [formQuery, setFormQuery] = useState('')
-
-  useEffect(() => {
-    showCurated
-      ? fetchCuratedImages(`https://api.pexels.com/v1/curated?page=${page}&per_page=12`, curatedPhotos, setCuratedPhotos)
-      : fetchSearchedImages(`https://api.pexels.com/v1/search?query=${formQuery}&page=${page}&per_page=12&locale=es-ES`, searchedPhotos, setSearchedPhotos, page)
-  }, [page])
-
-  useEffect(() => {
-    if (!showCurated && searchedPhotos.length === 0) {
-      setNotFound(true)
-    } else if (page === 1) {
-      setNotFound(false)
-      window.scrollTo(0, 550)
-    }
-  }, [searchedPhotos])
+  const { curatedPhotos, getCuratedPhotos } = useCuratedPhotos()
+  const { searchedPhotos, getSearchedPhotos } = useSearchPhotos()
+  const { page, setPage, getNextPage } = usePage(showCurated, formQuery, getCuratedPhotos, getSearchedPhotos)
+  const { notFound } = useNotFound(showCurated, searchedPhotos, page)
 
   const sendRequest = (e, query, resetQuery) => {
     e.preventDefault()
     setFormQuery(query)
     if (query !== '') {
       setShowCurated(false)
-      setPage(() => 1)
-      fetchSearchedImages(`https://api.pexels.com/v1/search?query=${query}&page=1&per_page=12&locale=es-ES`, searchedPhotos, setSearchedPhotos, page)
+      const firstPage = 1
+      setPage(firstPage)
+      getSearchedPhotos(query, firstPage)
       resetQuery()
     }
-  }
-
-  const getNextPage = () => {
-    setPage(page => page + 1)
   }
 
   return (
